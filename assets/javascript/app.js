@@ -38,3 +38,14 @@
 
   })
 
+  //Pull info from firebase to table
+db.ref().on("child_added", function(childsnap){
+    var name = childsnap.val().name;
+    var destination = childsnap.val().destination;
+    var frequency = childsnap.val().frequency;
+    var first = childsnap.val().first;
+
+    $("#trainData").append(
+        "<tr> <td>"+ name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + first + "</td></tr>");
+    
+})

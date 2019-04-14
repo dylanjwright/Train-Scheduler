@@ -45,7 +45,18 @@ db.ref().on("child_added", function(childsnap){
     var frequency = childsnap.val().frequency;
     var first = childsnap.val().first;
 
-    $("#trainData").append(
-        "<tr> <td>"+ name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + first + "</td></tr>");
+    //does not work properly-----
+    var timeLeft = moment().diff(moment.unix(first);
+    var minutesAway = (frequency - timeLeft);
+    var nextArrival = moment().add(minutesAway,"m").format("HH:mm");
+
+    console.log(timeLeft);
+    console.log(minutesAway);
+    console.log(nextArrival);
+
+
+    $("#trainInfo").append(
+        "<tr> <td>"+ name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
     
+        
 })
